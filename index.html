@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card interattiva</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        #card {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Modifica interattiva di una Card</h1>
+
+    <section>
+        <div>
+            <label for="image">Immagini URL</label>
+            <input type="text" id="image"  />
+        </div>
+
+        <label for="title-color">Colore Titolo</label>
+        <input type="color" id="title-color" />
+
+        <div>
+            <label for="paragraph-color">Colore Testo</label>
+            <input type="color" id="paragraph-color" />
+        </div>
+
+        <div>
+            <label for="padding-x">Padding Orizzontale</label>
+            <input type="number" id="padding-x" />
+        </div>
+
+        <div>
+            <label for="padding-y">Padding Verticale</label>
+            <input type="number" id="padding-y" />
+        </div>
+
+        <div>
+            <label for="border-radius">Bordi Arrotondati </label>
+            <input type="number" id="border-radius" />
+        </div>
+    </section>
+
+    <div id="card">
+        <img src="https://images.unsplash.com/photo-1682687982134-2ac563b2228b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8" alt="immagine" id="img" />
+        <div>
+            <h2>Titolo della card</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, neque
+                eaque. Distinctio voluptas dignissimos dolore ipsum voluptatem
+                inventore voluptate odio ipsa suscipit. Cum ducimus error facilis
+                reprehenderit pariatur, odio amet.
+            </p>
+        </div>
+    </div>
+
+    <script>
+    const immagineUrl = document.querySelector('#image');
+    const titleColor = document.querySelector('#title-color');
+    const paragraphColor = document.querySelector('#paragraph-color');
+    const paddingChangeX = document.querySelector('#padding-x');
+    const paddingChangeY = document.querySelector('#padding-y');
+    const borderRadiusChange = document.querySelector('#border-radius');
+
+        
+    
+    immagineUrl.addEventListener('input', (e) => {
+        let imgc = document.querySelector('div img');
+        console.log(e)
+        img.src = e.target.value
+    
+    })
+
+    paragraphColor.addEventListener('input', (e) =>{
+        let paragraph = document.querySelector('div p');
+        paragraph.style.color = e.target.value
+       
+
+    })
+    titleColor.addEventListener('input', (e) =>{
+        let title = document.querySelector('div h2');
+        title.style.color = e.target.value
+    })
+    paddingChangeX.addEventListener('input', (e) =>{
+        let paddingX = document.querySelector('#card div');
+        e.target.max = 20
+        e.target.min = 0
+        paddingX.style.paddingLeft = `${e.target.value}px`
+        paddingX.style.paddingRight = `${e.target.value}px`
+        if(e.target.value == 20 ) {
+           e.target.value = 0
+        }
+    })
+    paddingChangeY.addEventListener('input', (e) =>{
+        let paddingY = document.querySelector('#card div');
+        e.target.max = 20
+        e.target.min = 0
+        paddingY.style.paddingTop = `${e.target.value}px`
+        paddingY.style.paddingBottom = `${e.target.value}px`
+        if(e.target.value == 20 ) {
+           e.target.value = 0
+        }
+    })
+
+    borderRadiusChange.addEventListener('input', (e) =>{
+        let borderRadius = document.querySelector('#card')
+        borderRadius.style.borderRadius = `${e.target.value}px`
+        let imgc = document.querySelector('div img');
+        imgc.style.borderTopLeftRadius = `${e.target.value}px`;
+        imgc.style.borderTopRightRadius = `${e.target.value}px`;
+        
+    })
+   
+    </script>
+</body>
+
+</html>
